@@ -1,0 +1,127 @@
+hello{0=[1, 28], 1=[2], 2=[3, 19], 3=[4, 30, 0], 4=[5], 5=[6, 28], 6=[7, 8, 25], 7=[4], 8=[9, 27], 9=[10], 10=[11, 25], 11=[12, 24, 21], 12=[13], 13=[14, 20], 14=[15, 16, 19], 15=[12], 16=[17, 18], 17=[2], 18=[13], 19=[2], 20=[21, 22, 23], 21=[12, 11], 22=[10], 23=[18], 24=[9], 25=[6, 8, 26], 26=[22], 27=[5], 28=[0, 1, 29], 29=[27], 30=[17]}
+31
+{0=
+W e e
+e e e
+e e B
+, 1=
+e W e
+e e e
+e e B
+, 2=
+e W e
+e e e
+e B e
+, 3=
+W e e
+e e e
+e B e
+, 4=
+W e e
+e e B
+e e e
+, 5=
+e e e
+W e B
+e e e
+, 6=
+e e B
+W e e
+e e e
+, 7=
+W e B
+e e e
+e e e
+, 8=
+e e B
+e e e
+W e e
+, 9=
+e B e
+e e e
+W e e
+, 10=
+e B e
+e e e
+e W e
+, 11=
+B e e
+e e e
+e W e
+, 12=
+B e e
+e e W
+e e e
+, 13=
+e e e
+B e W
+e e e
+, 14=
+e e W
+B e e
+e e e
+, 15=
+B e W
+e e e
+e e e
+, 16=
+e e W
+e e e
+B e e
+, 17=
+e W e
+e e e
+B e e
+, 18=
+e e e
+e e W
+B e e
+, 19=
+e e W
+e e e
+e B e
+, 20=
+e e e
+B e e
+e e W
+, 21=
+B e e
+e e e
+e e W
+, 22=
+e B e
+e e e
+e e W
+, 23=
+e e e
+e e e
+B e W
+, 24=
+B e e
+e e e
+W e e
+, 25=
+e e B
+e e e
+e W e
+, 26=
+e e B
+e e e
+e e W
+, 27=
+e e e
+e e B
+W e e
+, 28=
+e e e
+W e e
+e e B
+, 29=
+e e e
+e e e
+W e B
+, 30=
+W e e
+e e e
+B e e
+}
