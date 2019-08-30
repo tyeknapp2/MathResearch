@@ -7,18 +7,18 @@ public class TicTacToe4x4 implements Game {
 	private String board;
 
 	private boolean victoryStatus;
-	
+
 	private boolean stalemateStatus;
-	
-	public final char PLAYER_1='O';
-	
-	public final char PLAYER_2='X';
-	
+
+	public final char PLAYER_1 = 'O';
+
+	public final char PLAYER_2 = 'X';
+
 	public TicTacToe4x4() {
 		board = "eeeeeeeeeeeeeeee";
 		victoryStatus = false;
 	}
-	
+
 	public TicTacToe4x4(String newBoard) {
 
 		board = newBoard;
@@ -27,53 +27,63 @@ public class TicTacToe4x4 implements Game {
 
 	@Override
 	public boolean checkVictory() {
-		stalemateStatus=false;
-		//horizontal checks
-		if(board.charAt(0)==board.charAt(1)&& board.charAt(0)==board.charAt(2)&& board.charAt(0)==board.charAt(3) &&board.charAt(0)!='e') {
-			victoryStatus=true;
-			return true;
-		}
-		else if(board.charAt(4)==board.charAt(5)&& board.charAt(4)==board.charAt(6)&& board.charAt(4)==board.charAt(7)&&board.charAt(4)!='e') {
-			victoryStatus=true;
-			return true;
-		}
-		else if(board.charAt(6)==board.charAt(7)&& board.charAt(6)==board.charAt(8)&&board.charAt(6)!='e') {
-			victoryStatus=true;
-			return true;
-		}
-		//vertical checks
-		else if(board.charAt(0)==board.charAt(3)&& board.charAt(0)==board.charAt(6)&&board.charAt(0)!='e') {
-			victoryStatus=true;
-			return true;
-		}
-		else if(board.charAt(1)==board.charAt(4)&& board.charAt(1)==board.charAt(7)&&board.charAt(1)!='e') {
-			victoryStatus=true;
-			return true;
-		}
-		else if(board.charAt(2)==board.charAt(5)&& board.charAt(8)==board.charAt(2)&&board.charAt(2)!='e') {
-			victoryStatus=true;
-			return true;
-		}
-		//diagonal checks
-		else if(board.charAt(0)==board.charAt(4)&& board.charAt(0)==board.charAt(8)&&board.charAt(0)!='e') {
-			victoryStatus=true;
-			return true;
-		}
-		else if(board.charAt(2)==board.charAt(4)&& board.charAt(2)==board.charAt(6)&&board.charAt(2)!='e') {
-			victoryStatus=true;
-			return true;
-		}
-		//no victor
-		else {
-			victoryStatus=false;
-			checkStalemateStatus();
-			return false;
-		}
+		stalemateStatus = false;
+		char[][] arrBoard = new char[4][4];
+
+		// // horizontal checks
+		// if (board.charAt(0) == board.charAt(1) && board.charAt(0) == board.charAt(2)
+		// && board.charAt(0) == board.charAt(3)
+		// && board.charAt(0) != 'e') {
+		// victoryStatus = true;
+		// return true;
+		// } else if (board.charAt(4) == board.charAt(5) && board.charAt(4) ==
+		// board.charAt(6)
+		// && board.charAt(4) == board.charAt(7) && board.charAt(4) != 'e') {
+		// victoryStatus = true;
+		// return true;
+		// } else if (board.charAt(6) == board.charAt(7) && board.charAt(6) ==
+		// board.charAt(8) && board.charAt(6) != 'e') {
+		// victoryStatus = true;
+		// return true;
+		// }
+		// // vertical checks
+		// else if (board.charAt(0) == board.charAt(3) && board.charAt(0) ==
+		// board.charAt(6) && board.charAt(0) != 'e') {
+		// victoryStatus = true;
+		// return true;
+		// } else if (board.charAt(1) == board.charAt(4) && board.charAt(1) ==
+		// board.charAt(7) && board.charAt(1) != 'e') {
+		// victoryStatus = true;
+		// return true;
+		// } else if (board.charAt(2) == board.charAt(5) && board.charAt(8) ==
+		// board.charAt(2) && board.charAt(2) != 'e') {
+		// victoryStatus = true;
+		// return true;
+		// }
+		// // diagonal checks
+		// else if (board.charAt(0) == board.charAt(4) && board.charAt(0) ==
+		// board.charAt(8) && board.charAt(0) != 'e') {
+		// victoryStatus = true;
+		// return true;
+		// } else if (board.charAt(2) == board.charAt(4) && board.charAt(2) ==
+		// board.charAt(6) && board.charAt(2) != 'e') {
+		// victoryStatus = true;
+		// return true;
+		// }
+		// // no victor
+		// else {
+		// victoryStatus = false;
+		// checkStalemateStatus();
+		// return false;
+		// }
+
+		checkStalemateStatus();
+		return false;
 	}
 
 	@Override
 	public boolean checkStalemateStatus() {
-		if(board.contains("e"))
+		if (board.contains("e"))
 			return false;
 		return true;
 	}
@@ -106,6 +116,7 @@ public class TicTacToe4x4 implements Game {
 		}
 		return moves;
 	}
+
 	@Override
 	public char getPlayer1() {
 		return PLAYER_1;
@@ -119,7 +130,7 @@ public class TicTacToe4x4 implements Game {
 	@Override
 	public void setTurnTruth(char turn) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -128,4 +139,3 @@ public class TicTacToe4x4 implements Game {
 		return false;
 	}
 }
-

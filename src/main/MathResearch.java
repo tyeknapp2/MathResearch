@@ -40,12 +40,12 @@ public class MathResearch {
 		Game yo = new TicTacToe3x3();
 		createAdjacencyList(yo, yo.getPlayer1(), 1);
 
-		//System.out.println(adjacencyList);
+		// System.out.println(adjacencyList);
 		// System.out.println(boardToNumber.containsKey("eeWeeeeeB"));
-//		System.out.println(totalBoards);
+		// System.out.println(totalBoards);
 		// System.out.println(numberToGame);
-		//printBoards();
-		 printAdjacencyList();
+		// printBoards();
+		printAdjacencyList();
 
 	}
 
