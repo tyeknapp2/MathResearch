@@ -17,10 +17,10 @@ public class TicTacToe4x4 implements Game {
 	public TicTacToe4x4() {
 		board = "eeeeeeeeeeeeeeee";
 		victoryStatus = false;
+		stalemateStatus = false;
 	}
 
 	public TicTacToe4x4(String newBoard) {
-
 		board = newBoard;
 		this.checkVictory();
 	}
@@ -29,62 +29,75 @@ public class TicTacToe4x4 implements Game {
 	public boolean checkVictory() {
 		stalemateStatus = false;
 		char[][] arrBoard = new char[4][4];
+		int index = 0;
+		for (int i = 0; i < 4; i++)
+			for (int j = 0; j < 4; j++)
+				arrBoard[i][j] = board.charAt(index++);
 
-		// // horizontal checks
-		// if (board.charAt(0) == board.charAt(1) && board.charAt(0) == board.charAt(2)
-		// && board.charAt(0) == board.charAt(3)
-		// && board.charAt(0) != 'e') {
-		// victoryStatus = true;
-		// return true;
-		// } else if (board.charAt(4) == board.charAt(5) && board.charAt(4) ==
-		// board.charAt(6)
-		// && board.charAt(4) == board.charAt(7) && board.charAt(4) != 'e') {
-		// victoryStatus = true;
-		// return true;
-		// } else if (board.charAt(6) == board.charAt(7) && board.charAt(6) ==
-		// board.charAt(8) && board.charAt(6) != 'e') {
-		// victoryStatus = true;
-		// return true;
-		// }
-		// // vertical checks
-		// else if (board.charAt(0) == board.charAt(3) && board.charAt(0) ==
-		// board.charAt(6) && board.charAt(0) != 'e') {
-		// victoryStatus = true;
-		// return true;
-		// } else if (board.charAt(1) == board.charAt(4) && board.charAt(1) ==
-		// board.charAt(7) && board.charAt(1) != 'e') {
-		// victoryStatus = true;
-		// return true;
-		// } else if (board.charAt(2) == board.charAt(5) && board.charAt(8) ==
-		// board.charAt(2) && board.charAt(2) != 'e') {
-		// victoryStatus = true;
-		// return true;
-		// }
-		// // diagonal checks
-		// else if (board.charAt(0) == board.charAt(4) && board.charAt(0) ==
-		// board.charAt(8) && board.charAt(0) != 'e') {
-		// victoryStatus = true;
-		// return true;
-		// } else if (board.charAt(2) == board.charAt(4) && board.charAt(2) ==
-		// board.charAt(6) && board.charAt(2) != 'e') {
-		// victoryStatus = true;
-		// return true;
-		// }
-		// // no victor
-		// else {
-		// victoryStatus = false;
-		// checkStalemateStatus();
-		// return false;
-		// }
+		index = 0;
 
+		// corners check
+		if (arrBoard[0][0] != 'e' && arrBoard[0][0] == arrBoard[0][3] && arrBoard[0][0] == arrBoard[3][0]
+				&& arrBoard[0][0] == arrBoard[3][3]) {
+			victoryStatus = true;
+			return true;
+		}
+		// diagonal checks
+		if (arrBoard[0][0] != 'e' && arrBoard[0][0] == arrBoard[1][1] && arrBoard[0][0] == arrBoard[2][2]
+				&& arrBoard[0][0] == arrBoard[3][3]) {
+			victoryStatus = true;
+			return true;
+		}
+		if (arrBoard[0][3] != 'e' && arrBoard[0][3] == arrBoard[1][2] && arrBoard[0][3] == arrBoard[2][1]
+				&& arrBoard[0][3] == arrBoard[3][0]) {
+			victoryStatus = true;
+			return true;
+		}
+		// horizontal checks
+		for (int i = 0; i < 4; i++) {
+			char c = arrBoard[i][0];
+			if (c != 'e')
+				for (int j = 1; j <= 4; j++) {
+					if (j == 4) {
+						victoryStatus = true;
+						return true;
+					} else if (arrBoard[i][j] != c) {
+						break;
+					}
+				}
+		}
+		// vertical checks
+		for (int i = 0; i < 4; i++) {
+			char c = arrBoard[0][i];
+			if (c != 'e')
+				for (int j = 1; j <= 4; j++) {
+					if (j == 4) {
+						victoryStatus = true;
+						return true;
+					} else if (arrBoard[j][i] != c) {
+						break;
+					}
+				}
+		}
+		// square checks
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (arrBoard[i][j] != 'e' && arrBoard[i][j] == arrBoard[i + 1][j] && arrBoard[i][j] == arrBoard[i][j + 1]
+						&& arrBoard[i][j] == arrBoard[i + 1][j + 1]) {
+					victoryStatus = true;
+					return true;
+				}
+			}
+		}
 		checkStalemateStatus();
 		return false;
 	}
 
 	@Override
 	public boolean checkStalemateStatus() {
-		if (board.contains("e"))
+		if (board.contains("e")) 
 			return false;
+		stalemateStatus=true;
 		return true;
 	}
 
@@ -106,14 +119,15 @@ public class TicTacToe4x4 implements Game {
 	@Override
 	public ArrayList<String> possibleMoves(char turn) {
 		ArrayList<String> moves = new ArrayList<String>();
-		for (int i = 0; i < 16; i++) {
-			if (board.charAt(i) == 'e') {
-				if (i < 8)
-					moves.add(board.substring(0, i) + turn + board.substring(i + 1));
-				else
-					moves.add(board.substring(0, i) + turn);
+		if (!stalemateStatus && !victoryStatus)
+			for (int i = 0; i < 16; i++) {
+				if (board.charAt(i) == 'e') {
+					if (i < 8)
+						moves.add(board.substring(0, i) + turn + board.substring(i + 1));
+					else
+						moves.add(board.substring(0, i) + turn);
+				}
 			}
-		}
 		return moves;
 	}
 
@@ -127,15 +141,22 @@ public class TicTacToe4x4 implements Game {
 		return PLAYER_2;
 	}
 
+	/*
+	 * method does not apply to TicTacToe since TicTacToe has linear game
+	 * progression
+	 */
 	@Override
 	public void setTurnTruth(char turn) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/*
+	 * method does not apply to TicTacToe since TicTacToe has linear game
+	 * progression
+	 */
 	@Override
 	public boolean getTurnTruth(char turn) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }
