@@ -46,6 +46,7 @@ public class MathResearch {
 		// System.out.println(numberToGame);
 		// printBoards();
 		printAdjacencyList();
+		System.out.println(numberToBoard.get(5477));
 
 	}
 
