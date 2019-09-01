@@ -15,6 +15,9 @@ class TicTacToe3x3Test {
 
 	@Test
 	void testCheckVictoryAndStalemate() {
+		/**
+		 * Tests the checkVictory and checkStalemateStatus
+		 */
 		Game test3x3 = new TicTacToe3x3();
 		assertTrue(!test3x3.seeStalemateStatus() && !test3x3.seeVictoryStatus());
 		test3x3 = new TicTacToe3x3("eOXeOXeOe");
