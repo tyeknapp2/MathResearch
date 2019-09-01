@@ -92,13 +92,12 @@ public class TicTacToe4x4 implements Game {
 		checkStalemateStatus();
 		return false;
 	}
-	
-	
+
 	@Override
 	public boolean checkStalemateStatus() {
-		if (board.contains("e")) 
+		if (board.contains("e"))
 			return false;
-		stalemateStatus=true;
+		stalemateStatus = true;
 		return true;
 	}
 

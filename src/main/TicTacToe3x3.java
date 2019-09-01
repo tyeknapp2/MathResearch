@@ -137,7 +137,7 @@ public class TicTacToe3x3 implements Game {
 		 * one might draw on a piece of paper it checks each character to ensure that
 		 * any e's are turned into empty spaces in order to increase readability it
 		 * would turn XOeOOeeeX into X | O | --------- O | O | --------- | | X
-		 
+		 * 
 		 */
 		return ((this.board.charAt(0) != 'e') ? this.board.charAt(0) : " ") + " | "
 				+ ((this.board.charAt(1) != 'e') ? this.board.charAt(1) : " ") + " | "
