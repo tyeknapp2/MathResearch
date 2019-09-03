@@ -122,7 +122,7 @@ public class TicTacToe4x4 implements Game {
 		if (!stalemateStatus && !victoryStatus)
 			for (int i = 0; i < 16; i++) {
 				if (board.charAt(i) == 'e') {
-					if (i < 8)
+					if (i < 15)
 						moves.add(board.substring(0, i) + turn + board.substring(i + 1));
 					else
 						moves.add(board.substring(0, i) + turn);

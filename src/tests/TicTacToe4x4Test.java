@@ -1,11 +1,14 @@
 /**
  * 
  */
-package main;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import main.Game;
+import main.TicTacToe4x4;
 
 /**
  * @author TyeKnappenberger

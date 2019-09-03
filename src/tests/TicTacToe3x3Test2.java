@@ -1,20 +1,23 @@
 /**
  * 
  */
-package main;
+package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+//import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import main.Game;
+import main.TicTacToe3x3;
 
 /**
  * @author TyeKnappenberger
  *
  */
-class TicTacToe3x3Test {
-
+public class TicTacToe3x3Test2 {
 	@Test
-	void testCheckVictoryAndStalemate() {
+	public void testCheckVictoryAndStalemate() {
 		/**
 		 * Tests the checkVictory and checkStalemateStatus
 		 */
@@ -58,10 +61,14 @@ class TicTacToe3x3Test {
 		assertTrue(!test3x3.seeStalemateStatus() && test3x3.seeVictoryStatus());
 		test3x3 = new TicTacToe3x3("OOXOOXXXX");
 		assertTrue(!test3x3.seeStalemateStatus() && test3x3.seeVictoryStatus());
+		/**
+		 * @returns null
+		 *
+		 */
 	}
 
 	@Test
-	void testPossibleMoves() {
+	public void testPossibleMoves() {
 		Game test3x3 = new TicTacToe3x3();
 		assertTrue(test3x3.possibleMoves('O').size() == 9);
 		assertTrue(test3x3.possibleMoves('O').contains("Oeeeeeeee"));
@@ -93,5 +100,4 @@ class TicTacToe3x3Test {
 		assertTrue(test3x3.possibleMoves('O').contains("OXeXOOOXe"));
 		assertTrue(test3x3.possibleMoves('O').contains("OXeXeOOXO"));
 	}
-
 }
