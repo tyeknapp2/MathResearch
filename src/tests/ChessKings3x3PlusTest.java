@@ -5,7 +5,10 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import errors.InvalidBoardString;
 import errors.TurnMismatchError;
@@ -38,8 +41,10 @@ public class ChessKings3x3PlusTest {
 		assertTrue(s.equals((new ChessKings3x3Plus()).toString()));
 	}
 
-	@Test
-	public void testPossibleMoves() {
+	
+	@ParameterizedTest(name="{index} => board= {0} number= {1}")
+	@CsvFileSource(resources="./ChessKingsPlus.csv")
+	public void testPossibleMoves(String str, int num) {
 		Game chess = new ChessKings3x3Plus();
 		try {
 			assertTrue(chess.possibleMoves(chess.getPlayer1()).size() == 2);
@@ -61,6 +66,11 @@ public class ChessKings3x3PlusTest {
 			assertTrue(chess.possibleMoves(chess.getPlayer2()).contains("WeeeeeeeBW"));
 			assertTrue(chess.possibleMoves(chess.getPlayer2()).contains("WeeeeeBeeW"));
 			assertTrue(chess.possibleMoves(chess.getPlayer2()).contains("WeeeeBeeeW"));
+			chess = new ChessKings3x3Plus(str);
+			if(str.charAt(9)==chess.getPlayer2())
+				assertTrue(chess.possibleMoves(chess.getPlayer2()).size() == num);
+			else
+				assertTrue(chess.possibleMoves(chess.getPlayer1()).size() == num);
 		} catch (InvalidBoardString | TurnMismatchError e) {
 
 			e.printStackTrace();
