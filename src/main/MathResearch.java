@@ -4,7 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JOptionPane;
+
+import errors.TurnMismatchError;
+import games.ChessKings3x3;
+import games.Game;
+import games.TicTacToe3x3;
 
 public class MathResearch {
 
@@ -60,15 +64,20 @@ public class MathResearch {
 
 			if (!game.checkStalemateStatus() && !game.checkVictory()) {
 				numberToGame.get(temp).setTurnTruth(player);
-				for (String b : game.possibleMoves(player)) {
-					if (game instanceof TicTacToe3x3)
-						adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
-								(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
-					else if (game instanceof ChessKings3x3) {
-						adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
-								(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+				try {
+					for (String b : game.possibleMoves(player)) {
+						if (game instanceof TicTacToe3x3)
+							adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
+									(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+						else if (game instanceof ChessKings3x3) {
+							adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
+									(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
 
+						}
 					}
+				} catch (TurnMismatchError e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		} else if (!numberToGame.get(boardToNumber.get(game.getBoard())).getTurnTruth(player)) {
@@ -76,76 +85,26 @@ public class MathResearch {
 
 			if (!game.checkStalemateStatus() && !game.checkVictory()) {
 				numberToGame.get(temp).setTurnTruth(player);
-				for (String b : game.possibleMoves(player)) {
-					if (game instanceof TicTacToe3x3)
-						adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
-								(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
-					else if (game instanceof ChessKings3x3) {
-						adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
-								(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+				try {
+					for (String b : game.possibleMoves(player)) {
+						if (game instanceof TicTacToe3x3)
+							adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
+									(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+						else if (game instanceof ChessKings3x3) {
+							adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
+									(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
 
+						}
 					}
+				} catch (TurnMismatchError e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 
 		}
 
 		return boardToNumber.get(game.getBoard());
-	}
-
-	public static void testChessKings3x3() {
-
-		//// System.out.println("Keeeeeeek: "+((new
-		//// ChessKings3x3()).possibleMoves(ChessKings3x3.PLAYER_1)));
-		//// System.out.println("Keeeeeeek: "+((new
-		//// ChessKings3x3()).possibleMoves(ChessKings3x3.PLAYER_2)));
-		// System.out.println("eeWeeeeBe: "+((new
-		//// ChessKings3x3("eeWeeeeBe")).possibleMoves(ChessKings3x3.PLAYER_1)));
-		// System.out.println("eeWeeeeBe: "+((new
-		//// ChessKings3x3("eeWeeeeBe")).possibleMoves(ChessKings3x3.PLAYER_2)));
-		//// System.out.println("WeeeeeBee: "+((new
-		//// ChessKings3x3("eWeeeeBee")).possibleMoves(ChessKings3x3.PLAYER_1)));
-		//// System.out.println("WeeeeeBee: "+((new
-		//// ChessKings3x3("eWeeeeBee")).possibleMoves(ChessKings3x3.PLAYER_2)));
-	}
-
-	public static void test3x3() {
-		// JOptionPane pane= new JOptionPane();
-		TicTacToe3x3 testBoard = new TicTacToe3x3();
-		while (JOptionPane.showConfirmDialog(null,
-				testBoard.toString() + "\n\nVICTORY:" + testBoard.seeVictoryStatus() + "\nSTALEMATE:"
-						+ testBoard.seeStalemateStatus(),
-				"Board Check", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
-			String s = "";
-			for (int i = 0; i < 9; i++) {
-				int x = (int) (Math.random() * 3);
-				if (x == 0)
-					s += "X";
-				else if (x == 1) {
-					s += "O";
-				} else {
-					s += "e";
-				}
-			}
-			testBoard = new TicTacToe3x3(s);
-		}
-		while (JOptionPane.showConfirmDialog(null,
-				testBoard.toString() + "\n\nVICTORY:" + testBoard.seeVictoryStatus() + "\nSTALEMATE:"
-						+ testBoard.seeStalemateStatus(),
-				"Board Check", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
-			String s = "";
-			for (int i = 0; i < 9; i++) {
-				int x = (int) (Math.random() * 2);
-				if (x == 0)
-					s += "X";
-				else if (x == 1) {
-					s += "O";
-				} else {
-					s += "e";
-				}
-			}
-			testBoard = new TicTacToe3x3(s);
-		}
 	}
 
 	public static void printBoards() {

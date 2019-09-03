@@ -8,8 +8,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import main.Game;
-import main.TicTacToe3x3;
+import errors.TurnMismatchError;
+import games.Game;
+import games.TicTacToe3x3;
 
 /**
  * @author TyeKnappenberger
@@ -70,6 +71,7 @@ public class TicTacToe3x3Test2 {
 	@Test
 	public void testPossibleMoves() {
 		Game test3x3 = new TicTacToe3x3();
+		try {
 		assertTrue(test3x3.possibleMoves('O').size() == 9);
 		assertTrue(test3x3.possibleMoves('O').contains("Oeeeeeeee"));
 		assertTrue(test3x3.possibleMoves('O').contains("eOeeeeeee"));
@@ -99,5 +101,8 @@ public class TicTacToe3x3Test2 {
 		assertTrue(test3x3.possibleMoves('O').contains("OXOXeOOXe"));
 		assertTrue(test3x3.possibleMoves('O').contains("OXeXOOOXe"));
 		assertTrue(test3x3.possibleMoves('O').contains("OXeXeOOXO"));
+		}catch(TurnMismatchError e) {
+			e.printStackTrace();
+		}
 	}
 }

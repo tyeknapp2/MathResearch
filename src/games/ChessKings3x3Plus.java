@@ -1,28 +1,45 @@
-package main;
+/**
+ * 
+ */
+package games;
 
 import java.util.ArrayList;
+import errors.*;
 
-public class ChessKings3x3 implements Game {
+/**
+ * Same game as ChessKing
+ * @author TyeKnappenberger
+ *
+ */
+public class ChessKings3x3Plus implements Game {
 
 	private String board;
-
+	private char toMove;
 	public static final char PLAYER_1 = 'W';
-
 	public static final char PLAYER_2 = 'B';
 
-	private boolean p1Gone;
-	private boolean p2Gone;
+	/*
+	 * private boolean p1Gone; private boolean p2Gone;
+	 */
 
-	public ChessKings3x3() {
+	public ChessKings3x3Plus() {
 		board = "WeeeeeeeB";
-		p1Gone = false;
-		p2Gone = false;
+		toMove = 'W';
+		/*
+		 * p1Gone = false; p2Gone = false;
+		 */
 	}
 
-	public ChessKings3x3(String b) {
-		board = b;
-		p1Gone = false;
-		p2Gone = false;
+	public ChessKings3x3Plus(String b) throws InvalidBoardString {
+		if (b.length() != 10) {
+			throw new InvalidBoardString(b
+					+ " is not a valid length. Proper board format is the first nine characters represent the board, the last character represents the piece to move in the next reconfiguration.");
+		}
+		board = b.substring(0, 9);
+		toMove = b.charAt(9);
+		/*
+		 * p1Gone = false; p2Gone = false;
+		 */
 	}
 
 	@Override
@@ -51,28 +68,30 @@ public class ChessKings3x3 implements Game {
 
 	@Override
 	public String getBoard() {
-		return board;
+		return board + toMove;
 	}
 
 	@Override
-	public ArrayList<String> possibleMoves(char turn) {
+	public ArrayList<String> possibleMoves(char turn) throws TurnMismatchError {
+		if(turn!=toMove)
+			throw new TurnMismatchError("Parameter turn: "+turn+" does not equal toMove: "+toMove);
 		ArrayList<String> possMoves = new ArrayList<String>();
 		int x = board.indexOf(turn);
 		String s;
 		if (x == 0) {
 			s = "e" + turn + board.substring(2);
 			if (validMove(s, turn))
-				possMoves.add(s);
+				possMoves.add(s + (toMove == PLAYER_1 ? PLAYER_2 : PLAYER_1));
 			s = board.substring(0, 3).replace(turn, 'e') + turn + board.substring(4);
 			if (validMove(s, turn))
-				possMoves.add(s);
+				possMoves.add(s + (toMove == PLAYER_1 ? PLAYER_2 : PLAYER_1));
 		} else if (x == 1) {
 			for (int i = 0; i < 6; i++) {
 				if (!(i == 1)) {
 					s = board.substring(0, i).replace(turn, 'e') + turn + board.substring(i + 1).replace(turn, 'e');
 
 					if (validMove(s, turn))
-						possMoves.add(s);
+						possMoves.add(s + (toMove == PLAYER_1 ? PLAYER_2 : PLAYER_1));
 				}
 			}
 
@@ -83,7 +102,7 @@ public class ChessKings3x3 implements Game {
 				}
 				s = board.substring(0, i).replace(turn, 'e') + turn + board.substring(i + 1).replace(turn, 'e');
 				if (validMove(s, turn))
-					possMoves.add(s);
+					possMoves.add(s + (toMove == PLAYER_1 ? PLAYER_2 : PLAYER_1));
 			}
 
 		} else if (x == 3) {
@@ -93,7 +112,7 @@ public class ChessKings3x3 implements Game {
 				}
 				s = board.substring(0, i).replace(turn, 'e') + turn + board.substring(i + 1).replace(turn, 'e');
 				if (validMove(s, turn))
-					possMoves.add(s);
+					possMoves.add(s + (toMove == PLAYER_1 ? PLAYER_2 : PLAYER_1));
 			}
 
 		} else if (x == 5) {
@@ -103,7 +122,7 @@ public class ChessKings3x3 implements Game {
 				}
 				s = board.substring(0, i).replace(turn, 'e') + turn + board.substring(i + 1).replace(turn, 'e');
 				if (validMove(s, turn))
-					possMoves.add(s);
+					possMoves.add(s + (toMove == PLAYER_1 ? PLAYER_2 : PLAYER_1));
 			}
 		} else if (x == 6) {
 			for (int i = 3; i < 8; i++) {
@@ -112,7 +131,7 @@ public class ChessKings3x3 implements Game {
 				}
 				s = board.substring(0, i).replace(turn, 'e') + turn + board.substring(i + 1).replace(turn, 'e');
 				if (validMove(s, turn))
-					possMoves.add(s);
+					possMoves.add(s + (toMove == PLAYER_1 ? PLAYER_2 : PLAYER_1));
 			}
 		} else if (x == 7) {
 			for (int i = 3; i < 9; i++) {
@@ -121,7 +140,7 @@ public class ChessKings3x3 implements Game {
 				}
 				s = board.substring(0, i).replace(turn, 'e') + turn + board.substring(i + 1).replace(turn, 'e');
 				if (validMove(s, turn))
-					possMoves.add(s);
+					possMoves.add(s + (toMove == PLAYER_1 ? PLAYER_2 : PLAYER_1));
 			}
 		} else if (x == 8) {
 			for (int i = 4; i < 8; i++) {
@@ -130,7 +149,7 @@ public class ChessKings3x3 implements Game {
 				}
 				s = board.substring(0, i).replace(turn, 'e') + turn + board.substring(i + 1).replace(turn, 'e');
 				if (validMove(s, turn))
-					possMoves.add(s);
+					possMoves.add(s + (toMove == PLAYER_1 ? PLAYER_2 : PLAYER_1));
 			}
 		}
 		return possMoves;
@@ -162,15 +181,10 @@ public class ChessKings3x3 implements Game {
 
 	@Override
 	public String toString() {
-		char[][] e = new char[3][3];
-		int x = 0;
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				e[i][j] = board.charAt(x++);
-			}
-		}
-		return "\n" + e[0][0] + " " + e[0][1] + " " + e[0][2] + "\n" + e[1][0] + " " + e[1][1] + " " + e[1][2] + "\n"
-				+ e[2][0] + " " + e[2][1] + " " + e[2][2] + "\n";
+	
+		int l=-1;
+		return "" + toMove + "\'s turn to move:\n" + board.charAt(++l) + " " + board.charAt(++l) + " " + board.charAt(++l) + "\n" + board.charAt(++l) + " "
+				+ board.charAt(++l) + " " + board.charAt(++l) + "\n" + board.charAt(++l) + " " + board.charAt(++l) + " " + board.charAt(++l) + "\n";
 	}
 
 	@Override
@@ -185,21 +199,11 @@ public class ChessKings3x3 implements Game {
 
 	@Override
 	public void setTurnTruth(char turn) {
-		if (turn == PLAYER_1) {
-			p1Gone = true;
-		} else if (turn == PLAYER_2) {
-			p2Gone = true;
-		}
-		return;
+
 	}
 
 	@Override
 	public boolean getTurnTruth(char turn) {
-		if (turn == PLAYER_1) {
-			return p1Gone;
-		} else if (turn == PLAYER_2) {
-			return p2Gone;
-		}
 		return true;
 	}
 

@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 import errors.*;
-import main.Game;
-import main.TicTacToeNxN;
+import games.Game;
+import games.TicTacToeNxN;
 
 public class TicTacToeNxNTest {
 
@@ -134,6 +134,7 @@ public class TicTacToeNxNTest {
 
 	}
 
+	@Test
 	public void testPossibleMoves() {
 		try {
 		Game testNxN = new TicTacToeNxN(4);
@@ -182,7 +183,7 @@ public class TicTacToeNxNTest {
 		assertTrue(testNxN.possibleMoves('O').contains("OXOXeOOXe"));
 		assertTrue(testNxN.possibleMoves('O').contains("OXeXOOOXe"));
 		assertTrue(testNxN.possibleMoves('O').contains("OXeXeOOXO"));
-		} catch (InvalidBoardString e) {
+		} catch (InvalidBoardString|TurnMismatchError e) {
 			e.printStackTrace();
 			fail();
 		}

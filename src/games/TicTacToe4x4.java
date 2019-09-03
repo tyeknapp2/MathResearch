@@ -1,6 +1,10 @@
-package main;
+package games;
 
 import java.util.ArrayList;
+
+/**
+ * To be deprecated
+ */
 
 public class TicTacToe4x4 implements Game {
 

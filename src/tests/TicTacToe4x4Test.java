@@ -7,8 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import main.Game;
-import main.TicTacToe4x4;
+import errors.TurnMismatchError;
+import games.Game;
+import games.TicTacToe4x4;
 
 /**
  * @author TyeKnappenberger
@@ -55,6 +56,7 @@ class TicTacToe4x4Test {
 	@Test
 	void testPossibleMoves() {
 		Game test4x4 = new TicTacToe4x4();
+		try {
 		assertTrue(test4x4.possibleMoves('O').size() == 16);
 		assertTrue(test4x4.possibleMoves('X').size() == 16);
 		test4x4 = new TicTacToe4x4("XeeeOeeeXeeeOeee");
@@ -66,5 +68,9 @@ class TicTacToe4x4Test {
 		test4x4 = new TicTacToe4x4("eeeeeeOOeeOOeeee");
 		assertTrue(test4x4.possibleMoves('O').isEmpty());
 		assertTrue(test4x4.possibleMoves('X').isEmpty());
+		}catch (TurnMismatchError e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

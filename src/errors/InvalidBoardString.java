@@ -9,6 +9,8 @@ package errors;
  */
 public class InvalidBoardString extends Exception {
 
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * To be thrown when the board string would be invalid.
 	 * 

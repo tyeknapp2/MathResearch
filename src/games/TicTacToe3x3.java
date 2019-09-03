@@ -1,13 +1,14 @@
 /**
  * 
  */
-package main;
+package games;
 
 import java.util.ArrayList;
 
 /**
+ * To be Deprecated
+ * 
  * @author TyeKnappenberger
- *
  */
 public class TicTacToe3x3 implements Game {
 

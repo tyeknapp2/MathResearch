@@ -5,8 +5,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import main.Game;
-import main.TicTacToe4x4;
+import errors.TurnMismatchError;
+import games.Game;
+import games.TicTacToe4x4;
 
 public class TicTacToe4x4Test2 {
 
@@ -49,6 +50,7 @@ public class TicTacToe4x4Test2 {
 	@Test
 	public void testPossibleMoves() {
 		Game test4x4 = new TicTacToe4x4();
+		try {
 		assertTrue(test4x4.possibleMoves('O').size() == 16);
 		assertTrue(test4x4.possibleMoves('X').size() == 16);
 		test4x4 = new TicTacToe4x4("XeeeOeeeXeeeOeee");
@@ -60,6 +62,10 @@ public class TicTacToe4x4Test2 {
 		test4x4 = new TicTacToe4x4("eeeeeeOOeeOOeeee");
 		assertTrue(test4x4.possibleMoves('O').isEmpty());
 		assertTrue(test4x4.possibleMoves('X').isEmpty());
+		
+		}catch (TurnMismatchError e) {
+			e.printStackTrace();
+		}
 	}
 
 }

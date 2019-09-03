@@ -1,7 +1,7 @@
 /**
  * 
  */
-package main;
+package games;
 
 import java.util.ArrayList;
 
@@ -53,30 +53,32 @@ public class TicTacToeNxN implements Game {
 	public TicTacToeNxN(String s) throws InvalidBoardString {
 		board = s;
 		boardSize = (int) Math.sqrt((double) s.length());
-		if (s.length()<9||s.length() % boardSize != 0)
+		if (s.length() < 9 || s.length() % boardSize != 0)
 			throw new InvalidBoardString(s + " is " + s.length()
 					+ " long. It is a not a valid length... Ensure the string length has an integer square root");
 		checkVictory();
 	}
 
+	/**
+	 * For all board sizes, it checks the standard victory conditions: the
+	 * diagonals, horizontals and verticals
+	 * 
+	 * If the board size is greater than 3 then it checks the super Tic-Tac-Toe
+	 * conditions getting all four corners or four in a square.
+	 * 
+	 * If no victory condition is met, it checks for a stalemate.
+	 * 
+	 * Finally, it sets this board's victoryStatus.
+	 * 
+	 * @return boolean victoryStatus
+	 */
 	@Override
 	public boolean checkVictory() {
 
 		stalemateStatus = false;
 
-		char[][] arrBoard = new char[boardSize][boardSize];
-		int index = 0;
-		for (int i = 0; i < boardSize; i++)
-			for (int j = 0; j < boardSize; j++)
-				arrBoard[i][j] = board.charAt(index++);
+		char[][] arrBoard = convertBoardStringToBoardArr();
 
-		index = 0;
-
-		/**
-		 * For all board sizes, it checks the standard victory conditions: the
-		 * diagonals, horizontals and verticals
-		 * 
-		 */
 		// \ diagonal check
 		for (int i = 1; i <= boardSize; i++) {
 			if (i == boardSize) {
@@ -124,8 +126,7 @@ public class TicTacToeNxN implements Game {
 		}
 
 		/**
-		 * If the board size is greater than 3 then it checks the super Tic-Tac-Toe
-		 * conditions getting all four corners or four in a square.
+		 * 
 		 */
 		if (boardSize > 3) {
 			// corners check
@@ -159,12 +160,21 @@ public class TicTacToeNxN implements Game {
 		return false;
 	}
 
+	private char[][] convertBoardStringToBoardArr() {
+		char[][] arrBoard = new char[boardSize][boardSize];
+		int index = 0;
+		for (int i = 0; i < boardSize; i++)
+			for (int j = 0; j < boardSize; j++)
+				arrBoard[i][j] = board.charAt(index++);
+		return arrBoard;
+	}
+
 	@Override
 	public boolean checkStalemateStatus() {
 		// checks to see
 		if (board.contains("e"))
 			return false;
-		
+
 		stalemateStatus = true;
 		return true;
 	}
@@ -192,12 +202,13 @@ public class TicTacToeNxN implements Game {
 		if (!stalemateStatus && !victoryStatus)
 			for (int i = 0; i < board.length(); i++) {
 				if (board.charAt(i) == 'e') {
-					if (i < boardSize - 1)
+					if (i < board.length() - 1)
 						moves.add(board.substring(0, i) + turn + board.substring(i + 1));
 					else
 						moves.add(board.substring(0, i) + turn);
 				}
 			}
+
 		return moves;
 	}
 
