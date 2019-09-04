@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+
 import errors.*;
 import games.Game;
 import games.TicTacToeNxN;
@@ -135,57 +138,75 @@ public class TicTacToeNxNTest {
 	}
 
 	@Test
-	public void testPossibleMoves() {
+	public void testPossibleMovesIntense() {
 		try {
-		Game testNxN = new TicTacToeNxN(4);
-		assertTrue(testNxN.possibleMoves('O').size() == 16);
-		assertTrue(testNxN.possibleMoves('X').size() == 16);
-		testNxN = new TicTacToeNxN(5);
-		assertTrue(testNxN.possibleMoves('O').size() == 25);
-		assertTrue(testNxN.possibleMoves('X').size() == 25);
-		testNxN = new TicTacToeNxN(6);
-		assertTrue(testNxN.possibleMoves('O').size() == 36);
-		assertTrue(testNxN.possibleMoves('X').size() == 36);
-		testNxN = new TicTacToeNxN("XeeeOeeeXeeeOeee");
-		assertTrue(testNxN.possibleMoves('O').size() == 12);
-		assertTrue(testNxN.possibleMoves('X').size() == 12);
-		testNxN = new TicTacToeNxN("OXXOXOOXOXXOXOXO");
-		assertTrue(testNxN.possibleMoves('O').isEmpty());
-		assertTrue(testNxN.possibleMoves('X').isEmpty());
-		testNxN = new TicTacToeNxN("eeeeeeOOeeOOeeee");
-		assertTrue(testNxN.possibleMoves('O').isEmpty());
-		assertTrue(testNxN.possibleMoves('X').isEmpty());
-		
-		testNxN = new TicTacToeNxN();
-		assertTrue(testNxN.possibleMoves('O').size() == 9);
-		assertTrue(testNxN.possibleMoves('O').contains("Oeeeeeeee"));
-		assertTrue(testNxN.possibleMoves('O').contains("eOeeeeeee"));
-		assertTrue(testNxN.possibleMoves('O').contains("eeOeeeeee"));
-		assertTrue(testNxN.possibleMoves('O').contains("eeeOeeeee"));
-		assertTrue(testNxN.possibleMoves('O').contains("eeeeOeeee"));
-		assertTrue(testNxN.possibleMoves('O').contains("eeeeeOeee"));
-		assertTrue(testNxN.possibleMoves('O').contains("eeeeeeOee"));
-		assertTrue(testNxN.possibleMoves('O').contains("eeeeeeeOe"));
-		assertTrue(testNxN.possibleMoves('O').contains("eeeeeeeeO"));
-		assertTrue(testNxN.possibleMoves('X').size() == 9);
-		assertTrue(testNxN.possibleMoves('X').contains("Xeeeeeeee"));
-		assertTrue(testNxN.possibleMoves('X').contains("eXeeeeeee"));
-		assertTrue(testNxN.possibleMoves('X').contains("eeXeeeeee"));
-		assertTrue(testNxN.possibleMoves('X').contains("eeeXeeeee"));
-		assertTrue(testNxN.possibleMoves('X').contains("eeeeXeeee"));
-		assertTrue(testNxN.possibleMoves('X').contains("eeeeeXeee"));
-		assertTrue(testNxN.possibleMoves('X').contains("eeeeeeXee"));
-		assertTrue(testNxN.possibleMoves('X').contains("eeeeeeeXe"));
-		assertTrue(testNxN.possibleMoves('X').contains("eeeeeeeeX"));
+			Game testNxN = new TicTacToeNxN(4);
+			assertTrue(testNxN.possibleMoves('O').size() == 16);
+			assertTrue(testNxN.possibleMoves('X').size() == 16);
+			testNxN = new TicTacToeNxN(5);
+			assertTrue(testNxN.possibleMoves('O').size() == 25);
+			assertTrue(testNxN.possibleMoves('X').size() == 25);
+			testNxN = new TicTacToeNxN(6);
+			assertTrue(testNxN.possibleMoves('O').size() == 36);
+			assertTrue(testNxN.possibleMoves('X').size() == 36);
+			testNxN = new TicTacToeNxN("XeeeOeeeXeeeOeee");
+			assertTrue(testNxN.possibleMoves('O').size() == 12);
+			assertTrue(testNxN.possibleMoves('X').size() == 12);
+			testNxN = new TicTacToeNxN("OXXOXOOXOXXOXOXO");
+			assertTrue(testNxN.possibleMoves('O').isEmpty());
+			assertTrue(testNxN.possibleMoves('X').isEmpty());
+			testNxN = new TicTacToeNxN("eeeeeeOOeeOOeeee");
+			assertTrue(testNxN.possibleMoves('O').isEmpty());
+			assertTrue(testNxN.possibleMoves('X').isEmpty());
 
-		testNxN = new TicTacToeNxN("OXeXeOOXe");
-		assertTrue(testNxN.possibleMoves('O').size() == 3);
-		assertTrue(testNxN.possibleMoves('O').contains("OXOXeOOXe"));
-		assertTrue(testNxN.possibleMoves('O').contains("OXeXOOOXe"));
-		assertTrue(testNxN.possibleMoves('O').contains("OXeXeOOXO"));
-		} catch (InvalidBoardString|TurnMismatchError e) {
+			testNxN = new TicTacToeNxN();
+			assertTrue(testNxN.possibleMoves('O').size() == 9);
+			assertTrue(testNxN.possibleMoves('O').contains("Oeeeeeeee"));
+			assertTrue(testNxN.possibleMoves('O').contains("eOeeeeeee"));
+			assertTrue(testNxN.possibleMoves('O').contains("eeOeeeeee"));
+			assertTrue(testNxN.possibleMoves('O').contains("eeeOeeeee"));
+			assertTrue(testNxN.possibleMoves('O').contains("eeeeOeeee"));
+			assertTrue(testNxN.possibleMoves('O').contains("eeeeeOeee"));
+			assertTrue(testNxN.possibleMoves('O').contains("eeeeeeOee"));
+			assertTrue(testNxN.possibleMoves('O').contains("eeeeeeeOe"));
+			assertTrue(testNxN.possibleMoves('O').contains("eeeeeeeeO"));
+			assertTrue(testNxN.possibleMoves('X').size() == 9);
+			assertTrue(testNxN.possibleMoves('X').contains("Xeeeeeeee"));
+			assertTrue(testNxN.possibleMoves('X').contains("eXeeeeeee"));
+			assertTrue(testNxN.possibleMoves('X').contains("eeXeeeeee"));
+			assertTrue(testNxN.possibleMoves('X').contains("eeeXeeeee"));
+			assertTrue(testNxN.possibleMoves('X').contains("eeeeXeeee"));
+			assertTrue(testNxN.possibleMoves('X').contains("eeeeeXeee"));
+			assertTrue(testNxN.possibleMoves('X').contains("eeeeeeXee"));
+			assertTrue(testNxN.possibleMoves('X').contains("eeeeeeeXe"));
+			assertTrue(testNxN.possibleMoves('X').contains("eeeeeeeeX"));
+
+			testNxN = new TicTacToeNxN("OXeXeOOXe");
+			assertTrue(testNxN.possibleMoves('O').size() == 3);
+			assertTrue(testNxN.possibleMoves('O').contains("OXOXeOOXe"));
+			assertTrue(testNxN.possibleMoves('O').contains("OXeXOOOXe"));
+			assertTrue(testNxN.possibleMoves('O').contains("OXeXeOOXO"));
+		} catch (InvalidBoardString | TurnMismatchError e) {
 			e.printStackTrace();
 			fail();
 		}
 	}
+
+	@ParameterizedTest(name = "{index} => board= {0} number= {1}")
+	@CsvFileSource(resources = "./NxNTests.csv")
+	public void testPossibleMovesQuick(String str, int num) {
+		Game tictactoe;
+		try {
+			tictactoe = new TicTacToeNxN(str);
+			if(!tictactoe.seeVictoryStatus()&&!tictactoe.seeStalemateStatus())
+				assertTrue(tictactoe.possibleMoves(tictactoe.getPlayer1()).size() == num);
+			else
+				assertTrue(tictactoe.possibleMoves(tictactoe.getPlayer1()).size() == 0);
+
+		} catch (InvalidBoardString | TurnMismatchError e) {
+			e.printStackTrace();
+			fail();
+		}
+	}
+
 }
