@@ -57,18 +57,18 @@ class TicTacToe4x4Test {
 	void testPossibleMoves() {
 		Game test4x4 = new TicTacToe4x4();
 		try {
-		assertTrue(test4x4.possibleMoves('O').size() == 16);
-		assertTrue(test4x4.possibleMoves('X').size() == 16);
-		test4x4 = new TicTacToe4x4("XeeeOeeeXeeeOeee");
-		assertTrue(test4x4.possibleMoves('O').size() == 12);
-		assertTrue(test4x4.possibleMoves('X').size() == 12);
-		test4x4 = new TicTacToe4x4("OXXOXOOXOXXOXOXO");
-		assertTrue(test4x4.possibleMoves('O').isEmpty());
-		assertTrue(test4x4.possibleMoves('X').isEmpty());
-		test4x4 = new TicTacToe4x4("eeeeeeOOeeOOeeee");
-		assertTrue(test4x4.possibleMoves('O').isEmpty());
-		assertTrue(test4x4.possibleMoves('X').isEmpty());
-		}catch (TurnMismatchError e) {
+			assertTrue(test4x4.possibleMoves('O').size() == 16);
+			assertTrue(test4x4.possibleMoves('X').size() == 16);
+			test4x4 = new TicTacToe4x4("XeeeOeeeXeeeOeee");
+			assertTrue(test4x4.possibleMoves('O').size() == 12);
+			assertTrue(test4x4.possibleMoves('X').size() == 12);
+			test4x4 = new TicTacToe4x4("OXXOXOOXOXXOXOXO");
+			assertTrue(test4x4.possibleMoves('O').isEmpty());
+			assertTrue(test4x4.possibleMoves('X').isEmpty());
+			test4x4 = new TicTacToe4x4("eeeeeeOOeeOOeeee");
+			assertTrue(test4x4.possibleMoves('O').isEmpty());
+			assertTrue(test4x4.possibleMoves('X').isEmpty());
+		} catch (TurnMismatchError e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

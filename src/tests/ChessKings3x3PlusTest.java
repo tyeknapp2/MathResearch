@@ -72,14 +72,14 @@ public class ChessKings3x3PlusTest {
 			(new ChessKings3x3Plus()).possibleMoves('B');
 		});
 	}
-	
-	@ParameterizedTest(name="{index} => board= {0} number= {1}")
-	@CsvFileSource(resources="./ChessKingsPlus.csv")
+
+	@ParameterizedTest(name = "{index} => board= {0} number= {1}")
+	@CsvFileSource(resources = "./ChessKingsPlus.csv")
 	public void testPossibleMovesQuick(String str, int num) {
 		Game chess;
 		try {
 			chess = new ChessKings3x3Plus(str);
-			if(str.charAt(9)==chess.getPlayer2())
+			if (str.charAt(9) == chess.getPlayer2())
 				assertTrue(chess.possibleMoves(chess.getPlayer2()).size() == num);
 			else
 				assertTrue(chess.possibleMoves(chess.getPlayer1()).size() == num);
@@ -89,6 +89,5 @@ public class ChessKings3x3PlusTest {
 			fail();
 		}
 
-		
 	}
 }

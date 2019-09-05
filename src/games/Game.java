@@ -12,6 +12,7 @@ public interface Game {
 	/**
 	 * checks whether a game has been won by either player if neither player has won
 	 * then a check for a stalemate is initiated
+	 * 
 	 * @return boolean victoryStatus
 	 */
 	public boolean checkVictory();

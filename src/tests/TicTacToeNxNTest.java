@@ -198,7 +198,7 @@ public class TicTacToeNxNTest {
 		Game tictactoe;
 		try {
 			tictactoe = new TicTacToeNxN(str);
-			if(!tictactoe.seeVictoryStatus()&&!tictactoe.seeStalemateStatus())
+			if (!tictactoe.seeVictoryStatus() && !tictactoe.seeStalemateStatus())
 				assertTrue(tictactoe.possibleMoves(tictactoe.getPlayer1()).size() == num);
 			else
 				assertTrue(tictactoe.possibleMoves(tictactoe.getPlayer1()).size() == 0);

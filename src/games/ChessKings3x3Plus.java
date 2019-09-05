@@ -8,6 +8,7 @@ import errors.*;
 
 /**
  * Same game as ChessKing
+ * 
  * @author TyeKnappenberger
  *
  */
@@ -73,8 +74,8 @@ public class ChessKings3x3Plus implements Game {
 
 	@Override
 	public ArrayList<String> possibleMoves(char turn) throws TurnMismatchError {
-		if(turn!=toMove)
-			throw new TurnMismatchError("Parameter turn: "+turn+" does not equal toMove: "+toMove);
+		if (turn != toMove)
+			throw new TurnMismatchError("Parameter turn: " + turn + " does not equal toMove: " + toMove);
 		ArrayList<String> possMoves = new ArrayList<String>();
 		int x = board.indexOf(turn);
 		String s;
@@ -181,10 +182,11 @@ public class ChessKings3x3Plus implements Game {
 
 	@Override
 	public String toString() {
-	
-		int l=-1;
-		return "" + toMove + "\'s turn to move:\n" + board.charAt(++l) + " " + board.charAt(++l) + " " + board.charAt(++l) + "\n" + board.charAt(++l) + " "
-				+ board.charAt(++l) + " " + board.charAt(++l) + "\n" + board.charAt(++l) + " " + board.charAt(++l) + " " + board.charAt(++l) + "\n";
+
+		int l = -1;
+		return "" + toMove + "\'s turn to move:\n" + board.charAt(++l) + " " + board.charAt(++l) + " " + board.charAt(++l)
+				+ "\n" + board.charAt(++l) + " " + board.charAt(++l) + " " + board.charAt(++l) + "\n" + board.charAt(++l) + " "
+				+ board.charAt(++l) + " " + board.charAt(++l) + "\n";
 	}
 
 	@Override

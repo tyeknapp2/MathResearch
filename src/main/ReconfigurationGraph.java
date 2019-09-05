@@ -34,96 +34,95 @@ public class ReconfigurationGraph {
   }
 
   private int createAdjacencyList(Game game, char player, int turn) {
-	  if (!boardToNumber.containsKey(game.getBoard())) {
-		  int temp = totalBoards;
-		  boardToNumber.put(game.getBoard(), totalBoards);
-		  adjacencyList.put(totalBoards, new ArrayList<Integer>());
-		  numberToGame.put(totalBoards, game);
-		  numberToBoard.put(totalBoards++, game.getBoard());
+    if (!boardToNumber.containsKey(game.getBoard())) {
+      int temp = totalBoards;
+      boardToNumber.put(game.getBoard(), totalBoards);
+      adjacencyList.put(totalBoards, new ArrayList<Integer>());
+      numberToGame.put(totalBoards, game);
+      numberToBoard.put(totalBoards++, game.getBoard());
 
-		  if (!game.checkStalemateStatus() && !game.checkVictory()) {
-			  numberToGame.get(temp).setTurnTruth(player);
-			  try {
-				  for (String b : game.possibleMoves(player)) {
-					  if (game instanceof TicTacToe3x3)
-						  adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
-								  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
-					  else if (game instanceof ChessKings3x3) {
-						  adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
-								  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
-					  }
-					  else if(game instanceof TicTacToeNxN) {
-						  try {
-							  adjacencyList.get(temp).add(createAdjacencyList(new TicTacToeNxN(b),
-									  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
-						  } catch (InvalidBoardString e) {
-							  // TODO Auto-generated catch block
-							  e.printStackTrace();
-						  }
-					  }
-				  }
-			  } catch (TurnMismatchError e) {
-				  // TODO Auto-generated catch block
-				  e.printStackTrace();
-			  }
-		  }
-	  } else if (!numberToGame.get(boardToNumber.get(game.getBoard())).getTurnTruth(player)) {
-		  int temp = boardToNumber.get(game.getBoard());
+      if (!game.checkStalemateStatus() && !game.checkVictory()) {
+        numberToGame.get(temp).setTurnTruth(player);
+        try {
+          for (String b : game.possibleMoves(player)) {
+            if (game instanceof TicTacToe3x3)
+              adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
+                  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+            else if (game instanceof ChessKings3x3) {
+              adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
+                  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+            } else if (game instanceof TicTacToeNxN) {
+              try {
+                adjacencyList.get(temp).add(createAdjacencyList(new TicTacToeNxN(b),
+                    (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+              } catch (InvalidBoardString e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+              }
+            }
+          }
+        } catch (TurnMismatchError e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      }
+    } else if (!numberToGame.get(boardToNumber.get(game.getBoard())).getTurnTruth(player)) {
+      int temp = boardToNumber.get(game.getBoard());
 
-		  if (!game.checkStalemateStatus() && !game.checkVictory()) {
-			  numberToGame.get(temp).setTurnTruth(player);
-			  try {
-				  for (String b : game.possibleMoves(player)) {
-					  if (game instanceof TicTacToe3x3)
-						  adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
-								  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
-					  else if (game instanceof ChessKings3x3) {
-						  adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
-								  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+      if (!game.checkStalemateStatus() && !game.checkVictory()) {
+        numberToGame.get(temp).setTurnTruth(player);
+        try {
+          for (String b : game.possibleMoves(player)) {
+            if (game instanceof TicTacToe3x3)
+              adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
+                  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+            else if (game instanceof ChessKings3x3) {
+              adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
+                  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
 
-					  }
-					  else if(game instanceof TicTacToeNxN) {
-						  try {
-							  adjacencyList.get(temp).add(createAdjacencyList(new TicTacToeNxN(b),
-									  (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
-						  } catch (InvalidBoardString e) {
-							  // TODO Auto-generated catch block
-							  e.printStackTrace();
-						  }
-					  }
-				  }
-			  } catch (TurnMismatchError e) {
-				  // TODO Auto-generated catch block
-				  e.printStackTrace();
-			  }
-		  }
+            } else if (game instanceof TicTacToeNxN) {
+              try {
+                adjacencyList.get(temp).add(createAdjacencyList(new TicTacToeNxN(b),
+                    (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+              } catch (InvalidBoardString e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+              }
+            }
+          }
+        } catch (TurnMismatchError e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      }
 
-	  }
+    }
 
     return boardToNumber.get(game.getBoard());
   }
 
   public int getTotalBoards() {
-	  return totalBoards;
+    return totalBoards;
   }
+
   public boolean contains(String s) {
-	  return boardToNumber.containsKey(s);
+    return boardToNumber.containsKey(s);
   }
 
   public void printAllBoards() {
-	  int x = 0;
-	  for (int i : adjacencyList.keySet()) {
-		  if (adjacencyList.get(i).isEmpty()) {
-			  System.out.println("" + numberToGame.get(i) + "\n");
-			  x++;
-		  }
-	  }
-	  System.out.print(x);
+    int x = 0;
+    for (int i : adjacencyList.keySet()) {
+      if (adjacencyList.get(i).isEmpty()) {
+        System.out.println("" + numberToGame.get(i) + "\n");
+        x++;
+      }
+    }
+    System.out.print(x);
   }
 
   public void printAdjacencyList() {
-	  for (int i : adjacencyList.keySet()) {
-		  System.out.println("" + i + ": " + adjacencyList.get(i));
-	  }
+    for (int i : adjacencyList.keySet()) {
+      System.out.println("" + i + ": " + adjacencyList.get(i));
+    }
   }
 }

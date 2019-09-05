@@ -54,16 +54,23 @@ public class MathResearch {
 //		printAdjacencyList();
 //		System.out.println(numberToBoard.get(5477));
 
-		for(int i=0;i<2000;i++) {
-			String s=randString(9);
-			if(countChar('O',s)==countChar('X',s)||countChar('O',s)==countChar('X',s)+1)
-				try {
-					if(!((new TicTacToeNxN(s)).seeVictoryStatus()))
-						System.out.println(s);
-				} catch (InvalidBoardString e) {
-					e.printStackTrace();
-				}
-		}
+//		for(int i=0;i<2000;i++) {
+//			String s=randString(9);
+//			if(countChar('O',s)==countChar('X',s)||countChar('O',s)==countChar('X',s)+1)
+//				try {
+//					if(!((new TicTacToeNxN(s)).seeVictoryStatus()))
+//						System.out.println(s);
+//				} catch (InvalidBoardString e) {
+//					e.printStackTrace();
+//				}
+//		}
+		ReconfigurationGraph r4x4;
+		Game g4x4;
+
+			g4x4 = new TicTacToeNxN();
+			r4x4 = new ReconfigurationGraph(g4x4, g4x4.getPlayer1(), 1);
+		
+		System.out.println("we did it");
 	}
 	
 	private static int countChar(char c, String s) {
