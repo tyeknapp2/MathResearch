@@ -6,9 +6,11 @@ package games;
 import java.util.ArrayList;
 
 /**
- * To be Deprecated
+ *  Three by three Tic-Tac-Toe. 
  * 
  * @author TyeKnappenberger
+ * 
+ * @deprecated Replaced by {@link TicTacToeNxN}
  */
 public class TicTacToe3x3 implements Game {
 

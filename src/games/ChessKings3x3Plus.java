@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import errors.*;
 
 /**
- * Same game as ChessKing
+ * 
+ * Follows the 
  * 
  * @author TyeKnappenberger
  *
+ * @see ChessKings3x3
  */
 public class ChessKings3x3Plus implements Game {
 
@@ -19,10 +21,11 @@ public class ChessKings3x3Plus implements Game {
 	public static final char PLAYER_1 = 'W';
 	public static final char PLAYER_2 = 'B';
 
-	/*
-	 * private boolean p1Gone; private boolean p2Gone;
-	 */
 
+
+	/**
+	 * 
+	 */
 	public ChessKings3x3Plus() {
 		board = "WeeeeeeeB";
 		toMove = 'W';
@@ -38,9 +41,7 @@ public class ChessKings3x3Plus implements Game {
 		}
 		board = b.substring(0, 9);
 		toMove = b.charAt(9);
-		/*
-		 * p1Gone = false; p2Gone = false;
-		 */
+		
 	}
 
 	@Override

@@ -64,13 +64,13 @@ public class MathResearch {
 //					e.printStackTrace();
 //				}
 //		}
-		ReconfigurationGraph r4x4;
-		Game g4x4;
-
-			g4x4 = new TicTacToeNxN();
-			r4x4 = new ReconfigurationGraph(g4x4, g4x4.getPlayer1(), 1);
-		
-		System.out.println("we did it");
+//		ReconfigurationGraph r4x4;
+//		Game g4x4;
+//		
+//			g4x4 = new TicTacToeNxN();
+//			r4x4 = new ReconfigurationGraph(g4x4, g4x4.getPlayer1(), 1);
+//		
+//		System.out.println("we did it");
 	}
 	
 	private static int countChar(char c, String s) {
@@ -97,6 +97,14 @@ public class MathResearch {
 		return k;
 	}
 
+	
+	/**
+	 * @param game	the
+	 * @param player	thi
+	 * @param turn	An internally used parameter. Should match the player's number, either one or two.
+	 * @return 	the number associated 
+	 * @deprecated Old code from a very
+	 */
 	public static int createAdjacencyList(Game game, char player, int turn) {
 		if (!boardToNumber.containsKey(game.getBoard())) {
 			int temp = totalBoards;

@@ -12,6 +12,7 @@ import games.Game;
 import games.TicTacToe4x4;
 
 /**
+ * @deprecated
  * @author TyeKnappenberger
  *
  */

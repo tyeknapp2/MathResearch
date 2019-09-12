@@ -2,10 +2,13 @@ package games;
 
 import java.util.ArrayList;
 
-/**
- * To be deprecated
- */
 
+/**
+ *
+ * @author TyeKnappenberger
+ *
+ * @deprecated Replaced by {@link TicTacToeNxN}
+ */
 public class TicTacToe4x4 implements Game {
 
 	private String board;

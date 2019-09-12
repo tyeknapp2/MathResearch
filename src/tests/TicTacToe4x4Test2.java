@@ -9,6 +9,12 @@ import errors.TurnMismatchError;
 import games.Game;
 import games.TicTacToe4x4;
 
+
+/**
+ * @deprecated
+ * @author TyeKnappenberger
+ *
+ */
 public class TicTacToe4x4Test2 {
 
 	@Test
