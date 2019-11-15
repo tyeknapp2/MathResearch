@@ -70,7 +70,6 @@ class TicTacToe4x4Test {
 			assertTrue(test4x4.possibleMoves('O').isEmpty());
 			assertTrue(test4x4.possibleMoves('X').isEmpty());
 		} catch (TurnMismatchError e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -153,7 +153,6 @@ public class TicTacToe4x4 implements Game {
 	 */
 	@Override
 	public void setTurnTruth(char turn) {
-		// TODO Auto-generated method stub
 
 	}
 

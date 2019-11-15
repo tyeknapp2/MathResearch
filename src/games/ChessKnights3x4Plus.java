@@ -73,6 +73,7 @@ public class ChessKnights3x4Plus implements Game {
 	}
 
 	/**
+	 * <p>
 	 * Returns a list of boards based on moving the piece specified in the
 	 * parameter. It moves that color knight to every possible position it could be
 	 * in for the next turn and outputs the string used to instantiate the next
@@ -81,10 +82,9 @@ public class ChessKnights3x4Plus implements Game {
 	 * @param turn The piece that you wish to move. Must match <code>toMove</code>.
 	 * @throws TurnMismatchError If <code>turn</code> does not match
 	 *                           <code>toMove</code> then it throws this error
-	 * @returns An <code>ArrayList</code> of <code>Strings</code> used to
-	 *          instantiate new <code>ChessKnights3x4Plu</code> that represent the
-	 *          next turns after moving the knight of the color specified by
-	 *          <code>turn</code>.
+	 * @return An <code>ArrayList</code> of <code>Strings</code> used to instantiate
+	 *         new <code>ChessKnights3x4Plus</code> that represent the next turns
+	 *         after moving the knight of the color specified by <code>turn</code>.
 	 */
 	@Override
 	public ArrayList<String> possibleMoves(char turn) throws TurnMismatchError {
@@ -95,10 +95,47 @@ public class ChessKnights3x4Plus implements Game {
 			int row = getRow(index);
 			int col = getCol(index);
 
+			String s = board.substring(0, index) + 'e' + board.substring(index + 1);
 			if (row + 2 < 3 && col + 1 < 4) {
-
+				String g = s.substring(0, indexFromRowAndColumn(row + 2, col + 1)) + nextToMove
+						+ s.substring(indexFromRowAndColumn(row + 2, col + 1) + 1);
+				possMoves.add(g);
 			}
-
+			if (row + 2 < 3 && col - 1 >= 0) {
+				String g = s.substring(0, indexFromRowAndColumn(row + 2, col - 1)) + nextToMove
+						+ s.substring(indexFromRowAndColumn(row + 2, col - 1) + 1);
+				possMoves.add(g);
+			}
+			if (row - 2 >= 0 && col + 1 < 4) {
+				String g = s.substring(0, indexFromRowAndColumn(row - 2, col + 1)) + nextToMove
+						+ s.substring(indexFromRowAndColumn(row - 2, col + 1) + 1);
+				possMoves.add(g);
+			}
+			if (row - 2 >= 0 && col - 1 >= 0) {
+				String g = s.substring(0, indexFromRowAndColumn(row - 2, col - 1)) + nextToMove
+						+ s.substring(indexFromRowAndColumn(row - 2, col - 1) + 1);
+				possMoves.add(g);
+			}
+			if (row + 1 < 3 && col + 2 < 4) {
+				String g = s.substring(0, indexFromRowAndColumn(row + 1, col + 1)) + nextToMove
+						+ s.substring(indexFromRowAndColumn(row + 1, col + 1) + 1);
+				possMoves.add(g);
+			}
+			if (row + 1 < 3 && col - 2 >= 0) {
+				String g = s.substring(0, indexFromRowAndColumn(row + 1, col - 2)) + nextToMove
+						+ s.substring(indexFromRowAndColumn(row + 1, col - 2) + 1);
+				possMoves.add(g);
+			}
+			if (row - 1 >= 0 && col + 2 < 4) {
+				String g = s.substring(0, indexFromRowAndColumn(row - 1, col + 2)) + nextToMove
+						+ s.substring(indexFromRowAndColumn(row - 1, col + 2) + 1);
+				possMoves.add(g);
+			}
+			if (row - 1 >= 0 && col - 2 >= 0) {
+				String g = s.substring(0, indexFromRowAndColumn(row - 1, col - 2)) + nextToMove
+						+ s.substring(indexFromRowAndColumn(row - 1, col - 2) + 1);
+				possMoves.add(g);
+			}
 		}
 		return possMoves;
 	}
@@ -161,7 +198,6 @@ public class ChessKnights3x4Plus implements Game {
 	 */
 	@Override
 	public boolean getTurnTruth(char turn) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

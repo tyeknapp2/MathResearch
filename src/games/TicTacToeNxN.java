@@ -181,7 +181,6 @@ public class TicTacToeNxN implements Game {
 
 	@Override
 	public boolean seeStalemateStatus() {
-		// TODO Auto-generated method stub
 		return stalemateStatus;
 	}
 
@@ -192,7 +191,6 @@ public class TicTacToeNxN implements Game {
 
 	@Override
 	public String getBoard() {
-		// TODO Auto-generated method stub
 		return board;
 	}
 

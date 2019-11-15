@@ -1,16 +1,16 @@
 package main;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+// import java.io.FileNotFoundException;
+// import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import errors.InvalidBoardString;
-import errors.TurnMismatchError;
-import games.ChessKings3x3;
+// import errors.InvalidBoardString;
+// import errors.TurnMismatchError;
+// import games.ChessKings3x3;
 import games.Game;
-import games.TicTacToe3x3;
-import games.TicTacToeNxN;
+// import games.TicTacToe3x3;
+// import games.TicTacToeNxN;
 
 public class MathResearch {
 
@@ -38,7 +38,6 @@ public class MathResearch {
 		// PrintStream("/Users/TyeKnappenberger/eclipse-workspace/MathResearch/src/main/out.txt");
 		// System.setOut(fileOut);
 		// } catch (FileNotFoundException e) {
-		// // TODO Auto-generated catch block
 		// e.printStackTrace();
 		// }
 
@@ -74,91 +73,91 @@ public class MathResearch {
 		// System.out.println("we did it");
 	}
 
-	private static int countChar(char c, String s) {
-		int x = 0;
-		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) == c) {
-				x++;
-			}
-		}
-		return x;
-	}
+	// private static int countChar(char c, String s) {
+	// int x = 0;
+	// for (int i = 0; i < s.length(); i++) {
+	// if (s.charAt(i) == c) {
+	// x++;
+	// }
+	// }
+	// return x;
+	// }
 
-	private static String randString(int length) {
-		String k = "";
-		double l;
-		for (int i = 0; i < length; i++) {
-			l = Math.random() * 3;
-			if (l < 1)
-				k += "X";
-			else if (l < 2)
-				k += "O";
-			else
-				k += "e";
-		}
-		return k;
-	}
+	// private static String randString(int length) {
+	// String k = "";
+	// double l;
+	// for (int i = 0; i < length; i++) {
+	// l = Math.random() * 3;
+	// if (l < 1)
+	// k += "X";
+	// else if (l < 2)
+	// k += "O";
+	// else
+	// k += "e";
+	// }
+	// return k;
+	// }
 
-	/**
-	 * @param game   the
-	 * @param player thi
-	 * @param turn   An internally used parameter. Should match the player's number,
-	 *               either one or two.
-	 * @return the number associated
-	 * @deprecated Old code from a very
-	 */
-	public static int createAdjacencyList(Game game, char player, int turn) {
-		if (!boardToNumber.containsKey(game.getBoard())) {
-			int temp = totalBoards;
-			boardToNumber.put(game.getBoard(), totalBoards);
-			adjacencyList.put(totalBoards, new ArrayList<Integer>());
-			numberToGame.put(totalBoards, game);
-			numberToBoard.put(totalBoards++, game.getBoard());
+	// /**
+	// * @param game the
+	// * @param player thi
+	// * @param turn An internally used parameter. Should match the player's number,
+	// * either one or two.
+	// * @return the number associated
+	// * @deprecated Old code from a very
+	// */
+	// public static int createAdjacencyList(Game game, char player, int turn) {
+	// if (!boardToNumber.containsKey(game.getBoard())) {
+	// int temp = totalBoards;
+	// boardToNumber.put(game.getBoard(), totalBoards);
+	// adjacencyList.put(totalBoards, new ArrayList<Integer>());
+	// numberToGame.put(totalBoards, game);
+	// numberToBoard.put(totalBoards++, game.getBoard());
 
-			if (!game.checkStalemateStatus() && !game.checkVictory()) {
-				numberToGame.get(temp).setTurnTruth(player);
-				try {
-					for (String b : game.possibleMoves(player)) {
-						if (game instanceof TicTacToe3x3)
-							adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
-									(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
-						else if (game instanceof ChessKings3x3) {
-							adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
-									(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+	// if (!game.checkStalemateStatus() && !game.checkVictory()) {
+	// numberToGame.get(temp).setTurnTruth(player);
+	// try {
+	// for (String b : game.possibleMoves(player)) {
+	// if (game instanceof TicTacToe3x3)
+	// adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
+	// (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+	// else if (game instanceof ChessKings3x3) {
+	// adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
+	// (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
 
-						}
-					}
-				} catch (TurnMismatchError e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} else if (!numberToGame.get(boardToNumber.get(game.getBoard())).getTurnTruth(player)) {
-			int temp = boardToNumber.get(game.getBoard());
+	// }
+	// }
+	// } catch (TurnMismatchError e) {
+	// e.printStackTrace();
+	// }
+	// }
+	// } else if
+	// (!numberToGame.get(boardToNumber.get(game.getBoard())).getTurnTruth(player))
+	// {
+	// int temp = boardToNumber.get(game.getBoard());
 
-			if (!game.checkStalemateStatus() && !game.checkVictory()) {
-				numberToGame.get(temp).setTurnTruth(player);
-				try {
-					for (String b : game.possibleMoves(player)) {
-						if (game instanceof TicTacToe3x3)
-							adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
-									(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
-						else if (game instanceof ChessKings3x3) {
-							adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
-									(turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+	// if (!game.checkStalemateStatus() && !game.checkVictory()) {
+	// numberToGame.get(temp).setTurnTruth(player);
+	// try {
+	// for (String b : game.possibleMoves(player)) {
+	// if (game instanceof TicTacToe3x3)
+	// adjacencyList.get(temp).add(createAdjacencyList(new TicTacToe3x3(b),
+	// (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
+	// else if (game instanceof ChessKings3x3) {
+	// adjacencyList.get(temp).add(createAdjacencyList(new ChessKings3x3(b),
+	// (turn == 1 ? game.getPlayer2() : game.getPlayer1()), (turn == 1 ? 2 : 1)));
 
-						}
-					}
-				} catch (TurnMismatchError e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+	// }
+	// }
+	// } catch (TurnMismatchError e) {
+	// e.printStackTrace();
+	// }
+	// }
 
-		}
+	// }
 
-		return boardToNumber.get(game.getBoard());
-	}
+	// return boardToNumber.get(game.getBoard());
+	// }
 
 	public static void printBoards() {
 		int x = 0;

@@ -100,7 +100,6 @@ class TicTacToe3x3Test {
 			assertTrue(test3x3.possibleMoves('O').contains("OXeXOOOXe"));
 			assertTrue(test3x3.possibleMoves('O').contains("OXeXeOOXO"));
 		} catch (TurnMismatchError e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		}
