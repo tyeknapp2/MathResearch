@@ -8,7 +8,7 @@ import errors.*;
 
 /**
  * 
- * Follows the 
+ * Follows the
  * 
  * @author TyeKnappenberger
  *
@@ -20,8 +20,6 @@ public class ChessKings3x3Plus implements Game {
 	private char toMove;
 	public static final char PLAYER_1 = 'W';
 	public static final char PLAYER_2 = 'B';
-
-
 
 	/**
 	 * 
@@ -41,7 +39,7 @@ public class ChessKings3x3Plus implements Game {
 		}
 		board = b.substring(0, 9);
 		toMove = b.charAt(9);
-		
+
 	}
 
 	@Override

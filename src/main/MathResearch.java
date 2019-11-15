@@ -33,76 +33,78 @@ public class MathResearch {
 		// }
 		//
 		// testChessKings3x3();
-//		try {
-//			PrintStream fileOut = new PrintStream("/Users/TyeKnappenberger/eclipse-workspace/MathResearch/src/main/out.txt");
-//			System.setOut(fileOut);
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		// try {
+		// PrintStream fileOut = new
+		// PrintStream("/Users/TyeKnappenberger/eclipse-workspace/MathResearch/src/main/out.txt");
+		// System.setOut(fileOut);
+		// } catch (FileNotFoundException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 		// Game yo= new ChessKings3x3();
 
-//		Game yo = new TicTacToe3x3();
-//		createAdjacencyList(yo, yo.getPlayer1(), 1);
-//
-//		// System.out.println(adjacencyList);
-//		// System.out.println(boardToNumber.containsKey("eeWeeeeeB"));
-//		// System.out.println(totalBoards);
-//		// System.out.println(numberToGame);
-//		// printBoards();
-//		printAdjacencyList();
-//		System.out.println(numberToBoard.get(5477));
+		// Game yo = new TicTacToe3x3();
+		// createAdjacencyList(yo, yo.getPlayer1(), 1);
+		//
+		// // System.out.println(adjacencyList);
+		// // System.out.println(boardToNumber.containsKey("eeWeeeeeB"));
+		// // System.out.println(totalBoards);
+		// // System.out.println(numberToGame);
+		// // printBoards();
+		// printAdjacencyList();
+		// System.out.println(numberToBoard.get(5477));
 
-//		for(int i=0;i<2000;i++) {
-//			String s=randString(9);
-//			if(countChar('O',s)==countChar('X',s)||countChar('O',s)==countChar('X',s)+1)
-//				try {
-//					if(!((new TicTacToeNxN(s)).seeVictoryStatus()))
-//						System.out.println(s);
-//				} catch (InvalidBoardString e) {
-//					e.printStackTrace();
-//				}
-//		}
-//		ReconfigurationGraph r4x4;
-//		Game g4x4;
-//		
-//			g4x4 = new TicTacToeNxN();
-//			r4x4 = new ReconfigurationGraph(g4x4, g4x4.getPlayer1(), 1);
-//		
-//		System.out.println("we did it");
+		// for(int i=0;i<2000;i++) {
+		// String s=randString(9);
+		// if(countChar('O',s)==countChar('X',s)||countChar('O',s)==countChar('X',s)+1)
+		// try {
+		// if(!((new TicTacToeNxN(s)).seeVictoryStatus()))
+		// System.out.println(s);
+		// } catch (InvalidBoardString e) {
+		// e.printStackTrace();
+		// }
+		// }
+		// ReconfigurationGraph r4x4;
+		// Game g4x4;
+		//
+		// g4x4 = new TicTacToeNxN();
+		// r4x4 = new ReconfigurationGraph(g4x4, g4x4.getPlayer1(), 1);
+		//
+		// System.out.println("we did it");
 	}
-	
+
 	private static int countChar(char c, String s) {
-		int x=0;
-		for(int i =0;i<s.length();i++) {
-			if(s.charAt(i)==c) {
+		int x = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == c) {
 				x++;
 			}
 		}
 		return x;
 	}
+
 	private static String randString(int length) {
-		String k="";
+		String k = "";
 		double l;
-		for(int i=0;i<length;i++) {
-			l= Math.random()*3;
-			if(l<1) 
-				k+="X";
-			else if(l<2)
-				k+="O";
+		for (int i = 0; i < length; i++) {
+			l = Math.random() * 3;
+			if (l < 1)
+				k += "X";
+			else if (l < 2)
+				k += "O";
 			else
-				k+="e";
+				k += "e";
 		}
 		return k;
 	}
 
-	
 	/**
-	 * @param game	the
-	 * @param player	thi
-	 * @param turn	An internally used parameter. Should match the player's number, either one or two.
-	 * @return 	the number associated 
+	 * @param game   the
+	 * @param player thi
+	 * @param turn   An internally used parameter. Should match the player's number,
+	 *               either one or two.
+	 * @return the number associated
 	 * @deprecated Old code from a very
 	 */
 	public static int createAdjacencyList(Game game, char player, int turn) {

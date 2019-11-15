@@ -6,7 +6,7 @@ package games;
 import java.util.ArrayList;
 
 /**
- *  Three by three Tic-Tac-Toe. 
+ * Three by three Tic-Tac-Toe.
  * 
  * @author TyeKnappenberger
  * 

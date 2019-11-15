@@ -11,19 +11,18 @@ import main.ReconfigurationGraph;
 //import games.Game;
 import games.TicTacToeNxN;
 
-public class ReconfigurationGraphTest 
-{
-	public ReconfigurationGraph r3x3 = new ReconfigurationGraph((new TicTacToeNxN()), (new TicTacToeNxN()).getPlayer1(), 1);
-
+public class ReconfigurationGraphTest {
+	public ReconfigurationGraph r3x3 = new ReconfigurationGraph((new TicTacToeNxN()), (new TicTacToeNxN()).getPlayer1(),
+			1);
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "./TicTacToeBoards.csv")
 	public void testGraphContains(String str) {
 
-		if(str.length()==9)
+		if (str.length() == 9)
 			assertTrue(r3x3.contains(str));
-		//else if(str.length()== 16)
-			
+		// else if(str.length()== 16)
+
 	}
 
 }
