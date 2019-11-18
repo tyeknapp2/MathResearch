@@ -20,7 +20,7 @@ public class ReconfigurationGraphTest {
 	public void testGraphContains(String str) {
 
 		if (str.length() == 9)
-			assertTrue(r3x3.contains(str));
+			assertTrue(str, r3x3.contains(str));
 		// else if(str.length()== 16)
 
 	}

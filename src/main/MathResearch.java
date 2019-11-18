@@ -11,6 +11,7 @@ import java.util.HashMap;
 import games.Game;
 // import games.TicTacToe3x3;
 // import games.TicTacToeNxN;
+import games.TicTacToeNxN;
 
 public class MathResearch {
 
@@ -21,7 +22,9 @@ public class MathResearch {
 	public static int totalBoards = 0;
 
 	public static void main(String[] args) {
-		// Game yo = new TicTacToe3x3();
+
+		Game yo = new TicTacToeNxN();
+		System.out.println(yo.getBoard());
 		//
 		//
 		// System.out.println(yo);
