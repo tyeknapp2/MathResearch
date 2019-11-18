@@ -35,17 +35,36 @@ public interface Game {
 	// returns the raw board string used for behind the scenes code
 	public String getBoard();
 
-	/*
-	 * returns an ArrayList of strings that can be used to make boards for the next
-	 * turn Throws an error if the character is not an X or O
+	/**
+	 * 
+	 * @param turn
+	 * @return
+	 * @throws TurnMismatchError
 	 */
 	public ArrayList<String> possibleMoves(char turn) throws TurnMismatchError;
 
+	/**
+	 * 
+	 * @return
+	 */
 	public char getPlayer1();
 
+	/**
+	 * 
+	 * @return
+	 */
 	public char getPlayer2();
 
+	/**
+	 * 
+	 * @param turn
+	 */
 	public void setTurnTruth(char turn);
 
+	/**
+	 * 
+	 * @param turn
+	 * @return
+	 */
 	public boolean getTurnTruth(char turn);
 }

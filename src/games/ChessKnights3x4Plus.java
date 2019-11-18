@@ -21,8 +21,9 @@ public class ChessKnights3x4Plus implements Game {
 	public final char PLAYER_2 = 'B';
 
 	/**
-	 * Checks and sets the victory status of the game. A game of knights is
+	 * <p>Checks and sets the victory status of the game. A game of knights is
 	 * considered won if one of either two knights have been eliminated.
+	 * 
 	 * 
 	 * @return victoryStatus
 	 */
