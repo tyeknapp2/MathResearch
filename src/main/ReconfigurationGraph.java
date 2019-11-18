@@ -55,8 +55,6 @@ public class ReconfigurationGraph {
 
   }
 
-  
-
   private int createAdjacencyList(Game game, char player, int turn) {
     if (!boardToNumber.containsKey(game.getBoard())) {
       int temp = totalBoards;
