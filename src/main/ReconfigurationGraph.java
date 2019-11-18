@@ -33,6 +33,30 @@ public class ReconfigurationGraph {
 
   }
 
+  public ReconfigurationGraph(Game game, char player) {
+    boardToNumber = new HashMap<String, Integer>();
+    adjacencyList = new HashMap<Integer, ArrayList<Integer>>();
+    numberToGame = new HashMap<Integer, Game>();
+    numberToBoard = new HashMap<Integer, String>();
+    totalBoards = 0;
+
+    createAdjacencyList(game, player, 1);
+  }
+
+  public ReconfigurationGraph(Game game) {
+
+    boardToNumber = new HashMap<String, Integer>();
+    adjacencyList = new HashMap<Integer, ArrayList<Integer>>();
+    numberToGame = new HashMap<Integer, Game>();
+    numberToBoard = new HashMap<Integer, String>();
+    totalBoards = 0;
+
+    createAdjacencyList(game, game.getPlayer1(), 1);
+
+  }
+
+  
+
   private int createAdjacencyList(Game game, char player, int turn) {
     if (!boardToNumber.containsKey(game.getBoard())) {
       int temp = totalBoards;

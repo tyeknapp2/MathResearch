@@ -1,9 +1,11 @@
 package main;
 
-// import java.io.FileNotFoundException;
-// import java.io.PrintStream;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.google.gson.*;
 
 // import errors.InvalidBoardString;
 // import errors.TurnMismatchError;
@@ -24,7 +26,12 @@ public class MathResearch {
 	public static void main(String[] args) {
 
 		Game yo = new TicTacToeNxN();
-		System.out.println(yo.getBoard());
+		Gson gsonBuilder = new GsonBuilder().create();
+
+		System.out.println(gsonBuilder.toJson(yo).toString());
+
+		ReconfigurationGraph graph = new ReconfigurationGraph(new TicTacToeNxN());
+		// System.out.println(gsonBuilder.toJson(graph).toString());
 		//
 		//
 		// System.out.println(yo);
@@ -36,14 +43,13 @@ public class MathResearch {
 		// }
 		//
 		// testChessKings3x3();
-		// try {
-		// PrintStream fileOut = new
-		// PrintStream("/Users/TyeKnappenberger/eclipse-workspace/MathResearch/src/main/out.txt");
-		// System.setOut(fileOut);
-		// } catch (FileNotFoundException e) {
-		// e.printStackTrace();
-		// }
-
+		try {
+			PrintStream fileOut = new PrintStream("/Users/TyeKnappenberger/eclipse-workspace/MathResearch/src/main/out2.txt");
+			System.setOut(fileOut);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		System.out.println(gsonBuilder.toJson(graph));
 		// Game yo= new ChessKings3x3();
 
 		// Game yo = new TicTacToe3x3();
