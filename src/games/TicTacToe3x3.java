@@ -5,6 +5,8 @@ package games;
 
 import java.util.ArrayList;
 
+import com.google.gson.JsonObject;
+
 /**
  * Three by three Tic-Tac-Toe.
  * 
@@ -173,5 +175,11 @@ public class TicTacToe3x3 implements Game {
 	public boolean getTurnTruth(char turn) {
 
 		return true;
+	}
+
+	@Override
+	public JsonObject toJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

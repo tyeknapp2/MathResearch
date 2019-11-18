@@ -2,6 +2,8 @@ package games;
 
 import java.util.ArrayList;
 
+import com.google.gson.JsonObject;
+
 public class ChessKings3x3 implements Game {
 
 	private String board;
@@ -201,6 +203,12 @@ public class ChessKings3x3 implements Game {
 			return p2Gone;
 		}
 		return true;
+	}
+
+	@Override
+	public JsonObject toJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

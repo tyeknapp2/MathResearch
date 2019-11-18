@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import errors.TurnMismatchError;
 
+import com.google.gson.*;
+
 /*
  * 
  */
@@ -67,4 +69,6 @@ public interface Game {
 	 * @return
 	 */
 	public boolean getTurnTruth(char turn);
+
+	public JsonObject toJSON();
 }

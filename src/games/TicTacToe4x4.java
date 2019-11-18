@@ -2,6 +2,8 @@ package games;
 
 import java.util.ArrayList;
 
+import com.google.gson.JsonObject;
+
 /**
  *
  * @author TyeKnappenberger
@@ -163,5 +165,11 @@ public class TicTacToe4x4 implements Game {
 	@Override
 	public boolean getTurnTruth(char turn) {
 		return true;
+	}
+
+	@Override
+	public JsonObject toJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

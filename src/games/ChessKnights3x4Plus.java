@@ -5,6 +5,8 @@ package games;
 
 import java.util.ArrayList;
 
+import com.google.gson.JsonObject;
+
 import errors.TurnMismatchError;
 
 /**
@@ -21,7 +23,8 @@ public class ChessKnights3x4Plus implements Game {
 	public final char PLAYER_2 = 'B';
 
 	/**
-	 * <p>Checks and sets the victory status of the game. A game of knights is
+	 * <p>
+	 * Checks and sets the victory status of the game. A game of knights is
 	 * considered won if one of either two knights have been eliminated.
 	 * 
 	 * 
@@ -200,6 +203,12 @@ public class ChessKnights3x4Plus implements Game {
 	@Override
 	public boolean getTurnTruth(char turn) {
 		return true;
+	}
+
+	@Override
+	public JsonObject toJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -4,6 +4,9 @@
 package games;
 
 import java.util.ArrayList;
+
+import com.google.gson.JsonObject;
+
 import errors.*;
 
 /**
@@ -206,6 +209,12 @@ public class ChessKings3x3Plus implements Game {
 	@Override
 	public boolean getTurnTruth(char turn) {
 		return true;
+	}
+
+	@Override
+	public JsonObject toJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

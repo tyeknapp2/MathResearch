@@ -5,6 +5,8 @@ package games;
 
 import java.util.ArrayList;
 
+import com.google.gson.JsonObject;
+
 import errors.InvalidBoardString;
 
 /**
@@ -240,6 +242,12 @@ public class TicTacToeNxN implements Game {
 
 	public int getBoardSize() {
 		return boardSize;
+	}
+
+	@Override
+	public JsonObject toJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
