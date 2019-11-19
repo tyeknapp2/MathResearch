@@ -2,14 +2,9 @@ package main;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.google.gson.*;
 
-// import errors.InvalidBoardString;
-// import errors.TurnMismatchError;
-// import games.ChessKings3x3;
 import games.Game;
 import games.TicTacToeNxN;
 
@@ -35,6 +30,5 @@ public class MathResearch {
 		System.out.println(json.getClass());
 		System.out.println(json.keySet());
 		System.out.println(json);
-
 	}
 }
